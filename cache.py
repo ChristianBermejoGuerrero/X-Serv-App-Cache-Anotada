@@ -1,3 +1,5 @@
+#Christian Bermejo Guerrero
+# Ejercicio 9.7 Cache Anotada 
 import webapp
 import urllib.request
 
@@ -20,6 +22,7 @@ class cache(webapp.webApp):
             if recurso.split('/')[0] == "reload":
                 url = recurso.split('/')[1]
                 print(url)
+                url = "http://" + url
                 # REDIRECCION A LA URL
                 httpCode = "302"
                 htmlBody = "<html><meta http-equiv= 'Refresh'" \
@@ -29,6 +32,7 @@ class cache(webapp.webApp):
                     if recurso in self.cache.keys():
                         httpCode = "200 OK"
                         htmlBody = self.cache[recurso];
+                        print("ENNTRAMS CACHE")
                     else:
                         url = "http://" + recurso
                         f = urllib.request.urlopen(url)
